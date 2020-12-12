@@ -1,0 +1,28 @@
+@*@{
+        Layout = "_Layout";
+
+        if(Context.Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+        {
+            Context.Response.Headers["Location"] = Context.Request.IsHttps;
+            Context.Response.Headers["Cache-Control"] = "no-store";
+        }
+        else
+        {
+            if (Request.IsAuthenticated)
+            {
+
+            }
+        }
+    }*@
+
+@{
+    if (Context.Request.Headers["X-Requested-With"] == "XMLHttpRequest") //ajax request
+    {
+        Context.Response.Headers["Location"] = Microsoft.AspNetCore.Http.Extensions.UriHelper.GetDisplayUrl(Context.Request);
+        Context.Response.Headers["Cache-Control"] = "no-store";//context.HttpContext.Response.Cache.SetNoStore(); //stop caching(partial content) on client's browser
+    }
+    else
+    {
+        Layout = "_Layout";
+    }
+}

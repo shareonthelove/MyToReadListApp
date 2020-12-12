@@ -1,0 +1,10 @@
+@model ToReadItem
+
+<form asp-action="AddBook" method="POST">
+<label asp-for="Title">Add a new book to read:</label>
+<input asp-for="Title">
+
+<label asp-for="DueAt"> &emsp;&emsp;&emsp;&emsp; When to read by:</label>
+<input asp-for="DueAt">
+<button type="submit" class="btn btn-primary" href="#/ToRead">Add</button>
+</form>
